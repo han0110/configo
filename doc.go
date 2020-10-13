@@ -5,10 +5,8 @@
 // let configo help to load configuration from env, file, flag by build-in
 // loaders as follows:
 //
-//	// ./examples/simple/main.go
-//
 //	type Config struct {
-//		Foo string
+//		Foo string `yaml:"foo"`
 //	}
 //
 //	func main() {
@@ -18,11 +16,13 @@
 //
 // Then we can run ./examples/simple/main.go like:
 //
-//	// with env
+//	# with env
 //	FOO=bar go run ./examples/simple/main.go
-//	// with flag
+//
+//	# with flag
 //	go run ./examples/simple/main.go --foo bar
-//	// with file config.yaml
+//
+//	# with file config.yaml
 //	go run ./examples/simple/main.go -f ./examples/simple/config.yaml
 //
 // You will see more usage in ./examples

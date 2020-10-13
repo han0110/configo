@@ -1,5 +1,8 @@
 # Configo
 
+[![GoDoc](https://godoc.org/github.com/han0110/configo?status.svg)](https://godoc.org/github.com/han0110/configo)
+[![Go Report Card](https://goreportcard.com/badge/github.com/han0110/configo)](https://goreportcard.com/report/github.com/han0110/configo)
+
 Configo provides an auto configuration loading tool without bothering to define a lot of flags, which is also highly extensible.
 
 ## Usage

@@ -1,6 +1,7 @@
 package node
 
 import (
+	"encoding"
 	"reflect"
 	"strconv"
 
@@ -91,6 +92,12 @@ func (filler *nodeFiller) fillSlice(node *Node, rValue reflect.Value) error {
 }
 
 func (filler *nodeFiller) fillSingle(rValue reflect.Value, value string) error {
+	if rValue.CanAddr() {
+		if textUnmarshaler, ok := rValue.Addr().Interface().(encoding.TextUnmarshaler); ok {
+			return textUnmarshaler.UnmarshalText([]byte(value))
+		}
+	}
+
 	switch rValue.Kind() {
 	case reflect.String:
 		rValue.SetString(value)

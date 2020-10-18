@@ -63,7 +63,7 @@ func (loader *FileLoader) findConfigFilePaths(args []string) []string {
 	// Find config file from flags.
 	if loader.ConfigFileFlag != "-" {
 		if flattenMap, err := ParseFlag(args); err == nil {
-			if value := flattenMap.Value(loader.ConfigFileFlag); value != "" {
+			if value, ok := flattenMap.Value(loader.ConfigFileFlag); ok && value != "" {
 				filepaths = append(filepaths, strings.Split(value, ",")...)
 			}
 		}

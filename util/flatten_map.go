@@ -22,9 +22,10 @@ func NewFlattenMap() *FlattenMap {
 }
 
 // Value implements node.FlattenMap with recording key's usage
-func (m *FlattenMap) Value(key string) string {
+func (m *FlattenMap) Value(key string) (value string, ok bool) {
 	m.used[key] = true
-	return m.data[key]
+	value, ok = m.data[key]
+	return value, ok
 }
 
 // ChildrenByPrefix implements node.FlattenMap

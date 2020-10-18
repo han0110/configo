@@ -87,7 +87,9 @@ func (f *flagSet) parseOne() (bool, error) {
 
 	// Looking for next argument
 	nextArg, value := f.args[0], ""
-	if nextArg[0] == '-' {
+	if len(nextArg) == 0 {
+		value = ""
+	} else if nextArg[0] == '-' {
 		// Start with '-', consider it to be another flag's arg,
 		// and current flag to be a boolean flag
 		value = "true"

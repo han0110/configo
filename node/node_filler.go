@@ -10,7 +10,7 @@ import (
 
 // FlattenMap provides data to fill a node.
 type FlattenMap interface {
-	Value(key string) string
+	Value(key string) (value string, ok bool)
 	ChildrenByPrefix(prefix string) []string
 }
 
@@ -39,7 +39,7 @@ func (filler *nodeFiller) fillNode(node *Node, rValue reflect.Value) error {
 	case reflect.Ptr:
 		return filler.fillNode(node, rValue.Elem())
 	default:
-		if value := filler.FlattenMap.Value(node.Key); value != "" {
+		if value, ok := filler.FlattenMap.Value(node.Key); ok {
 			return filler.fillSingle(rValue, value)
 		}
 	}

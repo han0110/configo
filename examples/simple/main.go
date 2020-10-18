@@ -15,5 +15,5 @@ type Config struct {
 func main() {
 	var config Config
 	_ = configo.Default().Load(&config, os.Args[1:])
-	fmt.Println(config.Foo)
+	fmt.Printf("foo: %s\n", config.Foo)
 }

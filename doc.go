@@ -12,6 +12,7 @@
 //	func main() {
 //		var config Config
 //		_ = configo.Default().Load(&config, os.Args[1:])
+//		fmt.Printf("foo: %s\n", config.Foo)
 //	}
 //
 // Then we can run ./examples/simple/main.go like:

@@ -2,7 +2,6 @@ package configo
 
 import (
 	"github.com/han0110/configo/node"
-	"go.uber.org/fx"
 )
 
 // Default provides a common usage of Configo with env, file, flag loaders.
@@ -40,12 +39,4 @@ func (configo *Configo) Load(config interface{}, args []string) error {
 	}
 
 	return nil
-}
-
-// AsFxOption provides as a fx.Option to help load and supply config.
-func (configo *Configo) AsFxOption(config interface{}, args []string) fx.Option {
-	if err := configo.Load(config, args); err != nil {
-		return fx.Error(err)
-	}
-	return fx.Supply(fx.Annotated{Target: config})
 }
